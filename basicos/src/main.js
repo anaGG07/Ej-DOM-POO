@@ -17,7 +17,7 @@ items.length; // 5
 let n = 0;
 for(const i of items){
    // i.textContent = `Hola amigo ${++n}` // imprime toda la etiqueta
-    i.textText = `Hola amigo ${++n}` // imprime el contenido
+    i.innerText = `Hola amigo ${++n}` // imprime el contenido
 }
 
 
