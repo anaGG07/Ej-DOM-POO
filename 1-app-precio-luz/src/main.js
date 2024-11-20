@@ -1,43 +1,50 @@
+// ----- DECLARACIÓN DE VARIABLES ---------
+import { cardPrices } from "./components/cardPrice/cardPrice";
+import { hourRangeSelect } from "./components/hoursRangeSelect/hourRangeSelect";
 import { createButton } from "./components/loadButton/loadButton";
-import { createSpinner } from "./components/spinner/spinner";
-import { getDataPrices } from "./helpers/getDataPrices";
-
-
-// ----- DECLARACIÓN DE VARIABLES------
- const hourRanges = import.meta.env.VITE_HOUR_RANGES.split(",");
- const baseUrl = import.meta.env.VITE_BASE_URL;
- const dateTimeStart = import.meta.env.VITE_DATE_TIME_START;
- const dateTimeEnd = import.meta.env.VITE_DATE_TIME_END;
- const timeTruncHour = import.meta.env.VITE_TIME_TRUNC_HOUR;
- const url = `${baseUrl}?${dateTimeStart}&${dateTimeEnd}&${timeTruncHour}`
-
+import {  createSpinner,  hiddenSpinner,  showSpinner,} from "./components/spinner/spinner";
 
 
 
 // ----- DECLARACIÓN DE FUNCIONES ------
 
-const handleClick = async () =>{
-    const app = document.getElementById("app"); // div#app del index.html
-    const spinner = createSpinner(); // crear spinner
-    app.appendChild(spinner); // añadir el Spinner al DOM
+const handleClick = async () => {
+  const app = document.getElementById("app"); // div#app del index.html
 
-    const data = await getDataPrices(url);
-    console.log(data);
-}
+  // Obtener el rango seleccionado
+  const selectedRange = document.getElementById("selectHours").value;
 
+  const spinner = createSpinner(); // crear spinner
+  app.appendChild(spinner); // añadir el Spinner al DOM
 
-document.addEventListener("DOMContentLoaded", () =>{
-    
-    const app = document.getElementById("app");
+  // Mostrar spinner
+  await showSpinner();
 
-    if (!app) {
-        console.error("El elemento con id 'app' no se encuentra en el DOM.");
-        return;
-    }
+  // CREAR TARJETA PRECIOS
+  try {
+    const card = await cardPrices(selectedRange);
+    app.appendChild(card);
 
-    const loadButton = createButton();
-    app.appendChild(loadButton);
+    //Ocultar spinner
+    hiddenSpinner();
+  } catch (error) {
+    console.error("Error al cargar los precios:", error);
+  }
+};
 
-    loadButton.addEventListener("click", handleClick);
+document.addEventListener("DOMContentLoaded", () => {
+  const app = document.getElementById("app");
+
+  const container = document.createElement("div");
+  container.id = "selectorContainer"
+
+  const loadButton = createButton();
+  const rangeHours = hourRangeSelect();
+
+  container.appendChild(rangeHours);
+  container.appendChild(loadButton);
+
+  app.appendChild(container);
+
+  loadButton.addEventListener("click", handleClick);
 });
-

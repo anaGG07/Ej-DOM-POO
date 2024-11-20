@@ -1,3 +1,5 @@
+import './loadButton.css';
+
 /**
  *  Boton 
  *  - nombre: cargar precios de la luz

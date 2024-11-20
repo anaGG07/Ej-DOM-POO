@@ -1,4 +1,8 @@
-
+/**
+ * 
+ * @param {*} url 
+ * @returns 
+ */
 export const getDataPrices = async (url) => {
     try {
 
