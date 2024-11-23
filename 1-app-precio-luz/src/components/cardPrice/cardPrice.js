@@ -40,10 +40,11 @@ export const cardPrices = async (rangeHour) => {
                 card.innerHTML = filteredData.map(({ value, datetime }) => {
                     const date = new Date(datetime).toLocaleString();
                     const splitDate = date.split(",");
+                    const hours = splitDate[1].split(":");
                     return `
                     <div id="cardContainer">
                         <p><strong>Fecha:</strong> ${splitDate[0]}</p>
-                        <p><strong>Hora:</strong> ${splitDate[1]}</p>
+                        <p><strong>Hora:</strong> ${hours[0]}:${hours[1]}h - ${Number(hours[0]) + 1}:${hours[1]}h</p>
                         <p><strong>Precio:</strong> ${value} €/MWh</p>
                     </div>
                 `

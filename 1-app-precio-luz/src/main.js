@@ -38,12 +38,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const container = document.createElement("div");
   container.id = "selectorContainer"
 
+  // CREAR BOTON Y SELECTOR
   const loadButton = createButton();
   const rangeHours = hourRangeSelect();
 
+  // AÑADIR BOTON Y SELECTOR AL CONTAINER
   container.appendChild(rangeHours);
   container.appendChild(loadButton);
 
+  // AÑADIR CONTAINER AL DIV "app"
   app.appendChild(container);
 
   loadButton.addEventListener("click", handleClick);

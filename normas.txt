@@ -18,17 +18,23 @@ back-B
 Cada modificacion, debe inyectarse al main con un merge (push + merge)
 SOLO INYECTAR EN LA RAMA MAIN, DESPUES DE HABER HECHO UN PR QUE SEA ACEPTADO POR EL COMPAÑERO.
 
-merge:
-	-> estando en la rama "back-a": mkdir backend
-									npm init -y
-									mkdir src
-									git add .
-									git commit -am "mensaje"
-									git push origin backend-a
+MERGE:
 
-									// desde rama main
-									git checkout main
-									git merge back-a
-									git add .
-									git commit -am "mensaje"
-									git push
+  ***** desde rama actual *****
+
+		git add .
+		git commit -am "mensaje"
+		git push origin backend-a
+		git checkout main
+
+  ***** desde rama main *****
+
+		git merge back-a
+		git add .
+		git commit -am "mensaje"
+		git push origin main
+
+  ***** actualizar local *****
+
+  		git pull
+  		git merge main
