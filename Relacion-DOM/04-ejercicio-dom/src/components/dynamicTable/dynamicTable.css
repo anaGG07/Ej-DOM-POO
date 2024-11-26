@@ -1,0 +1,18 @@
+#dynamic-table {
+  width: 500px;
+  border-collapse: collapse;
+  margin: 20px auto;
+  text-align: center;
+  
+}
+
+#tHead{
+    background-color: lightsteelblue;
+    font-size: larger;
+    font-weight: 700;
+    font-variant: small-caps;
+}
+
+#tBody tr:nth-child(even){
+    background-color: rgb(230, 230, 230);
+}

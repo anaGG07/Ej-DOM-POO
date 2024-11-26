@@ -1,0 +1,67 @@
+/* Formulario */
+#formQyA {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Contenedor de preguntas */
+.divQA {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #fff8dc;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Estilo para las preguntas */
+p {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center; 
+}
+
+
+/* Contenedor para cada input y label */
+.labelInput {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+
+/* Inputs */
+.inputAnswer {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+
+/* Labels */
+.labelInput {
+    font-weight: bold;
+    font-size: 16px;
+
+}
+
+/* Botón de envío */
+#formButton {
+    width: auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #fce304;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px auto;
+}
