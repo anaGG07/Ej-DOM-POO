@@ -1,6 +1,6 @@
 import { Usuario } from "./components/Usuario/Usuario";
-import { UsuarioClases } from "./components/UsuarioClases/UsuarioClases";
-import { UsuarioFFabrica } from "./components/UsuarioFFabrica/UsuarioFFabrica";
+import { UsuarioClases } from "./components/Usuario/UsuarioClases";
+import { UsuarioFFabrica } from "./components/Usuario/UsuarioFFabrica";
 
 // Crear instancia de Usuario
 //const usuario = new Usuario("ana", "xx@ejemplo.com", "1234");
