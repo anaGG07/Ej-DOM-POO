@@ -1,57 +1,94 @@
-import { Usuario } from "./components/Usuario/Usuario";
-import { UsuarioClases } from "./components/Usuario/UsuarioClases";
-import { UsuarioFFabrica } from "./components/Usuario/UsuarioFFabrica";
+//. ------ IMPORTACIONES ------
+import { Producto } from "./components/Productos/Producto.js";
+import { ProductoFFabrica } from "./components/Productos/ProductoFFabrica.js";
 
-// Crear instancia de Usuario
-//const usuario = new Usuario("ana", "xx@ejemplo.com", "1234");
-//const usuario = new UsuarioClases("a", "aa@gg.com", "123");
-const usuario = UsuarioFFabrica("a", "aa@gg.com", "123");
-
+//. ---- OBTENER CONTENEDOR PRINCIPAL ----
 const app = document.getElementById("app");
 
+// Estructura inicial para app
 app.innerHTML = `
-  <h2>Gestión de usuarios</h2>
-  <p>${usuario.getInfo()}</p>
-  <button id="btn-login"> Iniciar Sesión</button>
-  <button id="btn-act-email"> Actualizar Email</button>
-
-  <div id="form-container"></div>
+  <h2>Gestión de productos</h2>
+  <ul id="ulProducts"></ul>
 `;
 
-document.getElementById("btn-login")
-        .addEventListener("click", mostrarFormularioLogin);
+// Crear array de productos (lista)
+const listProducts = [];
 
-document.querySelector("#btn-act-email")
-        .addEventListener("click", mostrarFormularioUpdateEmail);
+// Crear ul donde añadir los li
+const ul = document.getElementById("ulProducts");
 
-function mostrarFormularioLogin(){
-  const formContainer = document.getElementById("form-container");
-  formContainer.innerHTML = `
-    <input id="email-login" type="email" placeholder="Introduce el email"/>
-    <input id="password-login" type="password" placeholder="Introduce la contraseña"/>
-    <button id="btn-enviar">Enviar</button>
-  `;
+//. ---- CREAR PRODUCTOS ----
+for (let i = 0; i < 10; i++) {
 
-  document.getElementById("btn-enviar")
-        .addEventListener("click", ()=>{
-          const email = document.getElementById("email-login").value.trim();
-          const pass = document.getElementById("password-login").value.trim();
-          alert(usuario.login(email, pass));
-        });
+  // INSTANCIA CON CLASE 
+  //const producto = new Producto(`Producto${i}`, 20 + i, 5 + i, `linkImagen${i}`);
+
+  // INSTANCIA CON FABRICA
+  const producto = ProductoFFabrica(`Producto${i}`, 20 + i, 5 + i, `linkImagen${i}`);
+  
+  listProducts.push(producto);
+
+  // Crear nuevo li para cada producto
+  const li = document.createElement("li");
+  li.id = `li${i}`;
+  li.innerHTML = generarHTMLProducto(producto, i); // <--- Generar el HTML reutilizable
+  ul.appendChild(li);
+
+  // Crear el click
+  document.getElementById(`btn-stock-${i}`).addEventListener("click", () => {
+    verFormulario(i);
+  });
 }
 
-
-function mostrarFormularioUpdateEmail() {
-  const formContainer = document.getElementById("form-container");
-  formContainer.innerHTML = `
-    <input id="update-email" type="email" placeholder="Introduce el nuevo email"/>
-    <button id="btn-actualizar">Actualizar</button>
+/**
+ * @description Genera el HTML inicial para un producto en la lista
+ * @param {Producto} producto 
+ * @param {number} index 
+ * @returns {string}
+ */
+function generarHTMLProducto(producto, index) {
+  return `
+    ${producto.getInfo()}
+    <button type="button" id="btn-stock-${index}">Actualizar stock</button>
   `;
-  document.querySelector("#btn-actualizar")
-        .addEventListener("click", ()=>{
-          const newEmail = document.getElementById("update-email").value.trim();
-          alert(usuario.updateEmail(newEmail));
-        });
 }
 
+/**
+ * @description Muestra el formulario para actualizar el stock de un producto
+ * @param {number} index 
+ */
+function verFormulario(index) {
+  const li = document.getElementById(`li${index}`);
 
+  // Crear el formulario dentro del <li>
+  li.innerHTML = `
+    ${listProducts[index].getInfo()}
+    <select id="select-option-${index}">
+      <option value="0">Añadir stock</option>
+      <option value="1">Restar stock</option>
+    </select>
+    <input type="number" id="input-cantidad-${index}" placeholder="Cantidad" min="1" />
+    <button type="button" id="btn-confirm-${index}">Confirmar</button>
+  `;
+
+  // Asignar evento al botón "Confirmar" para actualizar directamente usando el modelo
+  document.getElementById(`btn-confirm-${index}`).addEventListener("click", () => {
+    const option = parseInt(document.getElementById(`select-option-${index}`).value);
+    const cantidad = parseInt(document.getElementById(`input-cantidad-${index}`).value);
+
+    
+    // Actualizar el stock
+    const producto = listProducts[index];
+    producto.updateStock(option, cantidad);
+
+    // Actualizar el contenido del <li> 
+    li.innerHTML = generarHTMLProducto(producto, index);
+
+    // Reasignar el evento
+    document.getElementById(`btn-stock-${index}`).addEventListener("click", () => {
+      verFormulario(index);
+    });
+
+    console.log(producto); // Verificar producto actualizado en consola
+  });
+}
