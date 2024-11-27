@@ -1,5 +1,6 @@
 //. ------ IMPORTACIONES ------
 import { CuentaBancaria } from "./components/CBancaria/CuentaBancaria.js";
+import { CuentaBancariaFConstructora } from "./components/CBancaria/CuentaBancariaFConstructora.js";
 import './public/style.css'
 //import { CuentaBancariaFConstructora } from "./components/CBancaria/CuentaBancariaFConstructora.js";
 
@@ -7,7 +8,8 @@ import './public/style.css'
 const app = document.getElementById("app");
 
 // Crear instancia de clase
-const cuenta = new CuentaBancaria(1232, "ana", 100);
+//const cuenta = new CuentaBancaria(1232, "ana", 100);
+const cuenta = new CuentaBancariaFConstructora(1232, "ana", 100);
 
 // Añadir estructura al DOM
 app.innerHTML = `
