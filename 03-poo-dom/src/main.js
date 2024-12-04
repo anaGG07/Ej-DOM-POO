@@ -89,6 +89,7 @@ function verFormulario(index) {
       verFormulario(index);
     });
 
-    console.log(producto); // Verificar producto actualizado en consola
+    // Verificar producto actualizado en consola
+    console.log(producto); 
   });
 }
