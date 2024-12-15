@@ -1,0 +1,46 @@
+#formContainer {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  #dynamicForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .formInput {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  #submitButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #084b37;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #submitButton:hover {
+    background-color: #084b37;
+  }
+  
+  #errorContainer {
+    margin-bottom: 20px;
+  }
+  
+  .errorMessage {
+    color: red;
+    font-size: 14px;
+  }
+  

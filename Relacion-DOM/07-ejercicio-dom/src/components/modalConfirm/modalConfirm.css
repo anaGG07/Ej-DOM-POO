@@ -1,0 +1,90 @@
+/* Fondo de superposición */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+}
+
+/* Contenedor del modal */
+.modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Cabecera del modal */
+#modal-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 1px solid #ddd; 
+    padding-bottom: 10px;
+}
+
+#modal-header h2 {
+    margin: 0; 
+    font-size: 20px; 
+    color: #444; 
+}
+
+#modal-header button {
+    background-color: transparent;
+    color: #555;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+#modal-header button:hover {
+    color: red;
+}
+
+/* Cuerpo del modal */
+#modal-body {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Pie del modal */
+#modal-footer {
+    display: flex;
+    justify-content: flex-end; 
+    gap: 10px; 
+}
+
+#modal-footer button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#modal-footer button:hover {
+    background-color: #0056b3;
+}
+
+

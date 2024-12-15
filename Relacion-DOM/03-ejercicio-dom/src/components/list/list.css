@@ -1,0 +1,25 @@
+#ulList {
+    width: 20%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.liClass {
+    background-color: rgb(67, 168, 160);
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    list-style: none;
+}
+
+#formList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

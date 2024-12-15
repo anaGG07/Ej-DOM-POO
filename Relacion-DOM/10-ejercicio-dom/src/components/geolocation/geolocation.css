@@ -1,0 +1,27 @@
+#geolocationContainer {
+    width: 50%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  #locationDisplay {
+    margin: 20px 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  #getLocationButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #eeff00;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  #getLocationButton:hover {
+    background-color: #eeff00;
+  }
+  
