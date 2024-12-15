@@ -1,6 +1,5 @@
 //. ---- IMPORTACIONES ---- 
 import form from "./components/Formulario/formulario.js";
-import { data } from "./data/data.js";
 
 
 //. ---- CARGAR DOM ----

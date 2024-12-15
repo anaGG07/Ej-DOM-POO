@@ -1,0 +1,35 @@
+.tabButton{
+    padding: 5px;
+    background-color: rgb(200, 222, 241);
+    color: rgb(13, 5, 78);
+    border: none;
+    margin: 10px 0px 0px 10px;
+   
+
+}
+
+
+.tabButton:focus{
+    background-color: rgb(136, 181, 221);
+    color: rgb(13, 5, 78);
+    border: none;
+    padding: 5px;
+}
+
+.tabContent{
+    width: 30%;
+    margin: 20px 0px 0px 10px;
+    padding: 10px 0;
+    box-shadow: 2px 2px 5px rgba(14, 5, 78, 0.233);
+    
+}
+
+
+.tabContent.active {
+    display: block;
+}
+
+.tabContent.none {
+    display: none;
+}
+
